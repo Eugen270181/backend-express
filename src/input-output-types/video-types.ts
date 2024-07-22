@@ -15,18 +15,18 @@ export type ResolutionsString = keyof typeof Resolutions
 // const z = Resolutions['P144']
 
 export type OutputVideoType = {
-    id: number
-    title: string
-    author: string
-    canBeDownloaded: boolean
-    minAgeRestriction: null
-    createdAt: string
-    publicationDate: string
-    availableResolution: Resolutions[]
+    id: number,
+    title: string,
+    author: string,
+    canBeDownloaded: boolean,
+    minAgeRestriction: null,
+    createdAt: string,
+    publicationDate: string,
+    availableResolutions: Resolutions[],
 }
 
 export type InputVideoType = {
-    title: string
-    author: string
-    availableResolution: Resolutions[]
+    title: string,
+    author: string,
+    availableResolutions?: Resolutions[],
 }
