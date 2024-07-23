@@ -17,7 +17,7 @@ const inputValidation = (video: InputVideoType) => {
     let msg = 'error!!!!'
     let field ='title'
 // проверка наличия, а также валидности типа и значения обязательного свойства title
-    if (video.title == null || !(typeof(video.author)==='string') || !video.title.length || video.title.length > 40){
+    if (video.title == null || !(typeof(video.title)==='string') || !video.title.length || video.title.length > 40){
         pushToErrorObject(errors,msg,field)
      }
 // проверка наличия, а также валидности типа и значения обязательного свойства author
@@ -44,15 +44,16 @@ export const createVideoController = (req: Request<any, any, InputVideoType>, re
 
     // если всё ок - добавляем видео
     const Date1 = new Date()
-    const Date2 = new Date( Date1.setDate(Date1.getDate()+1) )
+    const Date2 = new Date( new Date().setDate(Date1.getDate()+1) )
     const newVideo: OutputVideoType = {
-        ...req.body,
-        canBeDownloaded: false,
-        createdAt: Date1.toISOString(), //1..18 || null
         id: Date.now() + Math.random(),
-        minAgeRestriction: null,
+        title:req.body.title,
+        author:req.body.author,
+        canBeDownloaded: false,
+        minAgeRestriction: null, //1..18 || null
+        createdAt: Date1.toISOString(), 
         publicationDate: Date2.toISOString(),
-        //new Date( new Date().setDate(new Date().getDate() + 1) ).toISOString()
+        availableResolutions: !(typeof(req.body.availableResolutions)==='undefined') ? req.body.availableResolutions : null
     }
     db.videos.push(newVideo)
     res.status(201).json(newVideo)

@@ -19,7 +19,7 @@ export type OutputVideoType = {
     title: string,
     author: string,
     canBeDownloaded: boolean,
-    minAgeRestriction: null,
+    minAgeRestriction: number | null,
     createdAt: string,
     publicationDate: string,
     availableResolutions: Resolutions[] | null,
@@ -29,5 +29,5 @@ export type OutputVideoType = {
 export type InputVideoType = {
     title: string,
     author: string,
-    availableResolutions?: Resolutions[] | null,
+    availableResolutions: Resolutions[] | null,
 }
