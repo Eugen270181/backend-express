@@ -1,3 +1,4 @@
+export type errorsMessagesType = {message: string, field: string}
 export type OutputErrorsType = {
-    errorsMessages: {message: string, field: string}[]
+    errorsMessages: errorsMessagesType[]
 }
