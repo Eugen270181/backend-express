@@ -2,8 +2,14 @@ import {Request, Response} from 'express'
 import {db} from '../db/db'
 
 export const deleteVideoController = (req: Request, res: Response, ) => {
-    db.videos=db.videos.filter(el => !(el.id === +req.params.id))
-    console.log(db.videos)
+    let newDbVideos= db.videos.filter(el => !(el.id === +req.params.id))
 
-    res.send(204)
+    if (newDbVideos.length !== db.videos.length) {
+        db.videos = newDbVideos
+        res.sendStatus(204)
+    }
+    else {
+        res.sendStatus(404)
+    }
+
 }

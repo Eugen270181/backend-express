@@ -24,7 +24,7 @@ export const inputValidation = (video: InputVideoType) => {
         pushToErrorObject(errors,msg,field)
     }
 // проверка валидности типа и значения необязательного свойства availableResolutions, если оно передано
-    field='availableResolution'
+    field='availableResolutions'
     if ( !( video.availableResolutions == null //typeof(video.availableResolutions)==='undefined' || video.availableResolutions === null
         || ( Array.isArray(video.availableResolutions) && video.availableResolutions.length && video.availableResolutions.every(p => Resolutions[p]) ) )
     ){
