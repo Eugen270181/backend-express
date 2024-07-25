@@ -18,19 +18,19 @@ export const updateValidation = (video: UpdateVideoType) => {
 
     field="title"; initField(field);
 // проверка наличия, а также валидности типа и значения обязательного свойства title
-    if (Field == null || !(typeField==='string') || !Field.length || Field.length > 40){
+    if (!Field|| !(typeField==='string') || !Field.length || Field.length > 40){
         pushToErrorObject(errors,msg,field)
     }
 
     field="author"; initField(field);
 // проверка наличия, а также валидности типа и значения обязательного свойства author
-    if (Field == null || !(typeField==='string') || !Field.length || Field.length > 20){
+    if (!Field || !(typeField==='string') || !Field.length || Field.length > 20){
         pushToErrorObject(errors,msg,field)
     }
 
     field="availableResolutions"; initField(field);
 // проверка валидности типа и значения необязательного свойства availableResolutions, если оно передано
-    if ( !( Field == null || ( Array.isArray(Field) && Field.length && Field.every((p:Resolutions) => Resolutions[p]) ) ) ){
+    if ( !( !Field || ( Array.isArray(Field) && Field.length && Field.every((p:Resolutions) => Resolutions[p]) ) ) ){
         pushToErrorObject(errors,msg,field)
     }
 
@@ -42,7 +42,7 @@ export const updateValidation = (video: UpdateVideoType) => {
 
     field="minAgeRestriction"; initField(field);
 // проверка валидности типа и значения необязательного свойства minAgeRestriction, если оно передано
-    if ( !( Field==null || ( typeField==='number' && 1 <= Field && Field <= 18 ) ) ) {
+    if ( !( !Field || ( typeField==='number' && 1 <= Field && Field <= 18 ) ) ) {
         pushToErrorObject(errors,msg,field)
     }
 

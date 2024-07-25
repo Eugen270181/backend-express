@@ -23,9 +23,9 @@ export const updateVideoController = (req: Request<any, any, UpdateVideoType>, r
     findVideo.author=req.body.author
     findVideo.title=req.body.title
     findVideo.availableResolutions=typeof(req.body.availableResolutions) !== 'undefined' ? req.body.availableResolutions : findVideo.availableResolutions
-    findVideo.canBeDownloaded=typeof(req.body.canBeDownloaded) !== 'undefined' ? req.body.canBeDownloaded : findVideo.canBeDownloaded
+    findVideo.canBeDownloaded=req.body.canBeDownloaded || findVideo.canBeDownloaded
     findVideo.minAgeRestriction=typeof(req.body.minAgeRestriction) !== 'undefined' ? req.body.minAgeRestriction : findVideo.minAgeRestriction
-    findVideo.publicationDate=typeof(req.body.publicationDate) !== 'undefined' ? req.body.publicationDate : findVideo.publicationDate
+    findVideo.publicationDate=req.body.publicationDate || findVideo.publicationDate
 
     res.sendStatus(204)
 }

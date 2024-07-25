@@ -22,7 +22,7 @@ export const createVideoController = (req: Request<any, any, InputVideoType>, re
         minAgeRestriction: null, //1..18 || null
         createdAt: Date1.toISOString(), 
         publicationDate: Date2.toISOString(),
-        availableResolutions: !(typeof(req.body.availableResolutions)==='undefined') ? req.body.availableResolutions : null
+        availableResolutions: typeof(req.body.availableResolutions)!=='undefined' ? req.body.availableResolutions : null
     }
     db.videos.push(newVideo)
     res.status(201).json(newVideo)
